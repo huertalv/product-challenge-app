@@ -1,0 +1,14 @@
+version: "2"
+services:
+  product-review:
+    image: huertalv/product-review:1.0.0
+    container_name: product-review
+    ports:
+      - "8081:8081"
+  product-service:
+    image: huertalv/product-service:1.0.0
+    container_name: product-service
+    ports:
+      - "8080:8080"
+    environment:
+      - REVIEW_SERVICE_URL=http://product-review:8081
